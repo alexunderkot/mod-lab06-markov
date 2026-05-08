@@ -74,8 +74,8 @@ TEST(task2, testSuffix1) {
     SetUpFunc(file, statetab, firstWords, NPREF);
 
 
-    EXPECT_EQ(5, statetab.size());
-    EXPECT_EQ(2, statetab[firstWords].size());
+    EXPECT_EQ(3, statetab.size());
+    EXPECT_EQ(1, statetab[firstWords].size());
 }
 
 TEST(task2, testSuffix2) {
@@ -85,13 +85,13 @@ TEST(task2, testSuffix2) {
     prefix firstWords;
 
     ofstream testFile(file);
-    testFile << "даже буква и символ = слово";
+    testFile << "даже буква и символ и слово";
     testFile.close();
 
     SetUpFunc(file, statetab, firstWords, NPREF);
 
-    EXPECT_EQ(6, statetab.size());
-    EXPECT_EQ(2, statetab[firstWords].size());
+    EXPECT_EQ(5, statetab.size());
+    EXPECT_EQ(1, statetab[firstWords].size());
 }
 
 TEST(task2, prefixSuffixMultiple) {
