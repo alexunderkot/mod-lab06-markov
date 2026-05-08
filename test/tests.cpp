@@ -167,7 +167,8 @@ TEST(task4, multiSuffix1) {
         textgen(2, 2, statetab, &textout);
     }
 
-    EXPECT_NE(textout.find("четыре"), string::npos);
+    EXPECT_NE(textout.find("три"), string::npos);
+    EXPECT_NE(textout.find("пять"), string::npos);
 }
 
 TEST(task4, multiSuffix2) {
