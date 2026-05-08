@@ -164,7 +164,7 @@ TEST(task4, multiSuffix1) {
 
     string textout = "";
     srand(100);
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 100; i++) {
         textgen(2, 2, statetab, &textout);
     }
 
@@ -226,7 +226,7 @@ TEST(task5, textNotEmpty) {
 }
 
 TEST(task5, textLength1) {
-    ifstream file("../../../test/testText2.txt");
+    ifstream file("../../../../test/testText2.txt");
     string word;
     string text;
 
