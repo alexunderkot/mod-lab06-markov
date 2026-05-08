@@ -13,7 +13,7 @@ void textgen(int Npref, int MaxGen,
 
     *textout += p.front() + " " + p.back() + " ";
 
-    unsigned int seed = 100;
+    unsigned int seed = time(0);
 
     for (int i = 1; i < MaxGen; i++) {
         int r = rand_r(&seed) % statetab[p].size();
