@@ -163,8 +163,8 @@ TEST(task4, multiSuffix1) {
     statetab[p3].push_back("пять");
 
     string textout = "";
-    srand(100);
-    for (int i = 0; i < 100; i++) {
+    srand(52);
+    for (int i = 0; i < 1000; i++) {
         textgen(2, 2, statetab, &textout);
     }
 
@@ -226,7 +226,12 @@ TEST(task5, textNotEmpty) {
 }
 
 TEST(task5, textLength1) {
-    ifstream file("../../../../test/testText2.txt");
+    ofstream out("testText2.txt");
+    for (int i = 0; i < 600; i++) {
+        out << "слово" << i % 10 << " ";
+    }
+    out.close();
+    ifstream file("testText2.txt");
     string word;
     string text;
 
@@ -263,7 +268,12 @@ TEST(task5, textLength1) {
 }
 
 TEST(task5, textLength2) {
-    ifstream file("../../../test/testText2.txt");
+    ofstream out("testText2.txt");
+    for (int i = 0; i < 600; i++) {
+        out << "слово" << i % 10 << " ";
+    }
+    out.close();
+    ifstream file("testText2.txt");
     string word;
     string text;
 
