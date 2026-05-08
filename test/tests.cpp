@@ -97,7 +97,7 @@ TEST(task2, testSuffix2) {
     prefix firstWords;
 
     ofstream testFile(file);
-    testFile << "даже буква и символ слово";
+    testFile << "даже буква и символ и слово";
     testFile.close();
 
     SetUpFunc(file, statetab, firstWords, NPREF);
@@ -133,25 +133,42 @@ TEST(task3, singleSuffix) {
     p.push_back("один");
     p.push_back("два");
     statetab[p].push_back("три");
+    prefix p2;
+    p2.push_back("два");
+    p2.push_back("три");
+    statetab[p2].push_back("четыре");
 
     string textout = "";
-    textgen(2, 1, statetab, &textout);
+    textgen(2, 2, statetab, &textout);
 
     EXPECT_NE(textout.find("три"), string::npos);
 }
 
 TEST(task4, multiSuffix1) {
     map<prefix, vector<string>> statetab;
-    prefix p;
-    p.push_back("один");
-    p.push_back("два");
-    statetab[p].push_back("три");
-    statetab[p].push_back("четыре");
+    prefix p1;
+    p1.push_back("один");
+    p1.push_back("два");
+    statetab[p1].push_back("три");
+    statetab[p1].push_back("четыре");
+
+    prefix p2;
+    p2.push_back("два");
+    p2.push_back("три");
+    statetab[p2].push_back("пять");
+
+    prefix p3;
+    p3.push_back("два");
+    p3.push_back("четыре");
+    statetab[p3].push_back("пять");
 
     string textout = "";
-    textgen(2, 1, statetab, &textout);
+    srand(100);
+    for (int i = 0; i < 100; i++) {
+        textgen(2, 2, statetab, &textout);
+    }
 
-    EXPECT_NE(textout.find("три"), string::npos);
+    EXPECT_EQ(textout.find("три"), 1);
     EXPECT_NE(textout.find("четыре"), string::npos);
 }
 
