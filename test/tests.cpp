@@ -164,7 +164,7 @@ TEST(task4, multiSuffix1) {
 
     string textout = "";
     srand(100);
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 1000; i++) {
         textgen(2, 2, statetab, &textout);
     }
 
@@ -185,8 +185,8 @@ TEST(task4, multiSuffix2) {
     statetab[p].push_back("шесть");
     statetab[p].push_back("семь");
     statetab[p].push_back("восемь");
-    vector<string> suffixes = {"один","два","три",
-        "четыре","пять","шесть","семь","восемь"};
+    vector<string> suffixes = {"один", "два", "три",
+        "четыре", "пять", "шесть", "семь", "восемь"};
 
     for (auto& s : suffixes) {
         prefix p2;
@@ -226,7 +226,7 @@ TEST(task5, textNotEmpty) {
 }
 
 TEST(task5, textLength1) {
-    ifstream file("testText2.txt");
+    ifstream file("mod-lab06-markov/test/testText2.txt");
     string word;
     string text;
 
@@ -263,7 +263,7 @@ TEST(task5, textLength1) {
 }
 
 TEST(task5, textLength2) {
-    ifstream file("testText2.txt");
+    ifstream file("mod-lab06-markov/test/testText2.txt");
     string word;
     string text;
 
