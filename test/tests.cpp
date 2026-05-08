@@ -1,12 +1,23 @@
 // Copyright 2021 GHA Test Team
 #include <gtest/gtest.h>
 #include <fstream>
+#include <map>
+#include <vector>
+#include <deque>
 #include "../include/textgen.h"
+
+
+using std::string;
+using std::vector;
+using std::map;
+using std::deque;
+using std::ofstream;
+using std::ifstream;
 
 // Создание таблицы как в main 
 void SetUpFunc(string filePath, map<prefix, vector<string>>& statetab,
      prefix& firstWords, int NPREF) {
-    ifstream file(filePath);
+    std::ifstream file(filePath);
     string word;
     prefix curPrefix;
     
@@ -115,7 +126,7 @@ TEST(task2, prefixSuffixMultiple) {
     EXPECT_EQ("там", statetab[p][1]);
 }
 
-TEST(task3, singleSuffix){
+TEST(task3, singleSuffix) {
     map<prefix, vector<string>> statetab;
     prefix p;
     p.push_back("один");
@@ -123,12 +134,12 @@ TEST(task3, singleSuffix){
     statetab[p].push_back("три");
 
     string textout = "";
-    textgen(2, 3, statetab, &textout);
+    textgen(2, 1, statetab, &textout);
 
     EXPECT_NE(textout.find("три"), string::npos);
 }
 
-TEST(task4, multiSuffix1){
+TEST(task4, multiSuffix1) {
     map<prefix, vector<string>> statetab;
     prefix p;
     p.push_back("один");
@@ -137,13 +148,13 @@ TEST(task4, multiSuffix1){
     statetab[p].push_back("четыре");
 
     string textout = "";
-    textgen(2, 3, statetab, &textout);
+    textgen(2, 2, statetab, &textout);
 
     EXPECT_NE(textout.find("три"), string::npos);
     EXPECT_NE(textout.find("четыре"), string::npos);
 }
 
-TEST(task4, multiSuffix2){
+TEST(task4, multiSuffix2) {
     map<prefix, vector<string>> statetab;
     prefix p;
     p.push_back("1");
@@ -178,7 +189,7 @@ TEST(task5, textNotEmpty) {
     statetab[p].push_back("третье");
 
     string textout = "";
-    textgen(2, 3, statetab, &textout);
+    textgen(2, 1, statetab, &textout);
 
     EXPECT_FALSE(textout.empty());
 }
@@ -209,8 +220,7 @@ TEST(task5, textLength1) {
     for (char c : textout) {
         if (c == '\n' || c == ' ') {
             isWord = false;
-        }
-        else {
+        } else {
             if (!isWord) {
                 isWord = true;
                 wordCount += 1;
@@ -247,8 +257,7 @@ TEST(task5, textLength2) {
     for (char c : textout) {
         if (c == '\n' || c == ' ') {
             isWord = false;
-        }
-        else {
+        } else {
             if (!isWord) {
                 isWord = true;
                 wordCount += 1;

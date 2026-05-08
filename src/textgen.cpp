@@ -1,7 +1,11 @@
+//Copyright 2026 Alexunderkot
 #include "../include/textgen.h"
+#include <string>
+#include <vector>
+#include <map>
 
-void textgen(int Npref, int MaxGen, map<prefix, vector<string>> statetab, string *textout) {
-
+void textgen(int Npref, int MaxGen, 
+    map<prefix, vector<string>> statetab, string *textout) {
     prefix p;
     p = statetab.begin()->first;
 

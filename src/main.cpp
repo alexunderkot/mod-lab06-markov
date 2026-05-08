@@ -1,3 +1,4 @@
+//Copyright 2026 Alexunderkot
 #include <iostream>
 #include <string>
 #include <vector>
@@ -6,15 +7,17 @@
 #include <fstream>
 #include "../include/textgen.h"
 
-using namespace std;
-
+using std::string;
+using std::vector;
+using std::map;
+using std::deque;
 
 int main(int argc, char const *argv[]) {
     const int NPREF = 2;                 // количество слов в префиксе
     const int MAXGEN = 1250;             // объем текста на выходе
     const string READFROM = "input.txt"; // путь до входного файла
-    const string WRITEIN = "../result/gen.txt";    // путь до выходного файла
-    
+    const string WRITEIN = "../result/gen.txt"; // путь до выходного файла
+
     srand(time(nullptr));
     std::ifstream file(READFROM);
     std::string word;
@@ -34,9 +37,10 @@ int main(int argc, char const *argv[]) {
         curPrefix.pop_front();
     }
     
-    textgen(NPREF, MAXGEN, statetab, &text); //отправляем ограничения файл и первые два слова для генерации
+    //отправляем ограничения файл и первые два слова для генерации
+    textgen(NPREF, MAXGEN, statetab, &text);
 
-    ofstream fileout(WRITEIN);
+    std::ofstream fileout(WRITEIN);
     fileout << text;
 
     return 0;
