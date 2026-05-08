@@ -15,7 +15,7 @@ using std::deque;
 
 typedef deque<string> prefix;
 
-void textgen(int Npref, int MaxGen, map<prefix, 
+void textgen(int Npref, int MaxGen, map<prefix,
     vector<string>> statetab, string *textout);
 
 #endif // INCLUDE_TEXTGEN_H_

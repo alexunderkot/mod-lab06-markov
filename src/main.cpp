@@ -26,17 +26,17 @@ int main(int argc, char const *argv[]) {
     typedef deque<string> prefix;         // очередь префиксов
     map<prefix, vector<string>> statetab; // префикс-суффиксы
     prefix curPrefix;
-    
+
     for (int i = 0; i < NPREF && file >> word; i++) {
         curPrefix.push_back(word);
     }
-    
+
     while (file >> word) {
         statetab[curPrefix].push_back(word);
         curPrefix.push_back(word);
         curPrefix.pop_front();
     }
-    
+
     //отправляем ограничения файл и первые два слова для генерации
     textgen(NPREF, MAXGEN, statetab, &text);
 

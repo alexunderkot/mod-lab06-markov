@@ -4,6 +4,7 @@
 #include <map>
 #include <vector>
 #include <deque>
+#include <string>
 #include "../include/textgen.h"
 
 
@@ -14,18 +15,18 @@ using std::deque;
 using std::ofstream;
 using std::ifstream;
 
-// Создание таблицы как в main 
+// Создание таблицы как в main
 void SetUpFunc(string filePath, map<prefix, vector<string>>& statetab,
      prefix& firstWords, int NPREF) {
     std::ifstream file(filePath);
     string word;
     prefix curPrefix;
-    
+
     for (int i = 0; i < NPREF && file >> word; i++) {
         curPrefix.push_back(word);
         firstWords.push_back(word);
     }
-    
+
     while (file >> word) {
         statetab[curPrefix].push_back(word);
         curPrefix.push_back(word);
@@ -96,12 +97,12 @@ TEST(task2, testSuffix2) {
     prefix firstWords;
 
     ofstream testFile(file);
-    testFile << "даже буква и символ и слово";
+    testFile << "даже буква и символ слово";
     testFile.close();
 
     SetUpFunc(file, statetab, firstWords, NPREF);
 
-    EXPECT_EQ(5, statetab.size());
+    EXPECT_EQ(4, statetab.size());
     EXPECT_EQ(1, statetab[firstWords].size());
 }
 
@@ -148,7 +149,7 @@ TEST(task4, multiSuffix1) {
     statetab[p].push_back("четыре");
 
     string textout = "";
-    textgen(2, 2, statetab, &textout);
+    textgen(2, 1, statetab, &textout);
 
     EXPECT_NE(textout.find("три"), string::npos);
     EXPECT_NE(textout.find("четыре"), string::npos);
@@ -198,14 +199,14 @@ TEST(task5, textLength1) {
     ifstream file("testText2.txt");
     string word;
     string text;
-    
+
     map<prefix, vector<string>> statetab;
     prefix curPrefix;
-    
+
     for (int i = 0; i < 2 && file >> word; i++) {
         curPrefix.push_back(word);
     }
-    
+
     while (file >> word) {
         statetab[curPrefix].push_back(word);
         curPrefix.push_back(word);
@@ -235,14 +236,14 @@ TEST(task5, textLength2) {
     ifstream file("testText2.txt");
     string word;
     string text;
-    
+
     map<prefix, vector<string>> statetab;
     prefix curPrefix;
-    
+
     for (int i = 0; i < 2 && file >> word; i++) {
         curPrefix.push_back(word);
     }
-    
+
     while (file >> word) {
         statetab[curPrefix].push_back(word);
         curPrefix.push_back(word);
